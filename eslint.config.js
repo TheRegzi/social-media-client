@@ -16,7 +16,6 @@ export default [
     linterOptions: {
       reportUnusedDisableDirectives: true,
     },
-    // Include rules directly from the recommended ESLint config
     ...eslintRecommended.configs.recommended,
   },
   {
@@ -35,7 +34,7 @@ export default [
       jest: eslintPluginJest,
     },
     rules: {
-      ...eslintPluginJest.configs.recommended.rules, // Use Jest recommended rules
+      ...eslintPluginJest.configs.recommended.rules,
       'jest/prefer-expect-assertions': 'off',
     },
   },
