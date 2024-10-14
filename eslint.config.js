@@ -1,5 +1,6 @@
 import eslintPluginJest from 'eslint-plugin-jest';
 import eslintRecommended from '@eslint/js';
+import eslintPluginCypress from 'eslint-plugin-cypress';
 
 export default [
   {
@@ -19,6 +20,7 @@ export default [
     ...eslintRecommended.configs.recommended,
   },
   {
+    // Unit test (Jest) configuration
     files: ['**/*.test.js'],
     languageOptions: {
       globals: {
@@ -36,6 +38,29 @@ export default [
     rules: {
       ...eslintPluginJest.configs.recommended.rules,
       'jest/prefer-expect-assertions': 'off',
+    },
+  },
+  {
+    // Cypress test configuration
+    files: ['cypress/**/*.js', 'cypress/**/*.ts'],
+    languageOptions: {
+      globals: {
+        Cypress: 'readonly',
+        cy: 'readonly',
+        expect: 'readonly',
+        describe: 'readonly',
+        it: 'readonly',
+        before: 'readonly',
+        after: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+      },
+    },
+    plugins: {
+      cypress: eslintPluginCypress,
+    },
+    rules: {
+      ...eslintPluginCypress.configs.recommended.rules,
     },
   },
 ];
