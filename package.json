@@ -5,13 +5,16 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "test": "npm run test-e2e && npm run test-unit",
+	  "test-e2e": "cypress open",
+    "test-e2e-report": "cypress run --reporter mochawesome",
+	  "test-e2e-cli": "cypress run",
+    "test-unit": "jest",
     "build": "sass src/scss:dist/css",
-    "start": "sass --watch src/scss:dist/css & live-server",
+    "start": "sass --watch src/scss:dist/css && live-server",
     "lint": "eslint src/**/*.js",
     "format": "prettier --write .",
-    "prepare": "husky install",
-    "test": "npm run test-unit",
-    "test-unit": "jest"
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "Noroff",
